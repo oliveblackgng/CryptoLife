@@ -1,0 +1,827 @@
+
+{% extends "base.html" %}
+
+{% block title %}Virtual Lab | CryptoLife{% endblock %}
+
+{% block content %}
+
+<link rel="stylesheet"
+      href="{{ url_for('static', filename='css/lab.css') }}">
+
+<meta name="csrf-token" content="{{ csrf_token() }}">
+
+<section class="lab-container">
+
+    <div class="lab-heading">
+        <p class="eyebrow">CRYPTO LIFE / EXPERIMENTAL WORKSPACE</p>
+        <h1>Virtual <span>Laboratory</span></h1>
+        <p>
+            Explore cryptobiosis, tardigrade survival and
+            space environmental conditions through interactive
+            scientific models.
+        </p>
+    </div>
+
+    <div class="scientific-notice">
+        <strong>Research model notice</strong>
+        <p>
+            Results are educational mathematical indices.
+            They are not experimentally validated predictions
+            of biological survival or damage.
+        </p>
+    </div>
+
+    <!-- INTERACTIVE TARDIGRADE LAB -->
+<section class="visual-lab-card">
+
+    <p class="module-label">LIVE SIMULATION</p>
+    <h2>Interactive Tardigrade Laboratory</h2>
+
+    <p>
+        Observe how a tardigrade's appearance changes
+        under different environmental conditions.
+    </p>
+
+    <div class="tardigrade-scene" id="tardigrade-scene">
+
+        <div class="environment-particle"></div>
+        <div class="environment-particle"></div>
+        <div class="environment-particle"></div>
+        <div class="environment-particle"></div>
+        <div class="environment-particle"></div>
+
+        <!-- Active tardigrade -->
+        <div id="tardigrade">
+
+            <div class="tardigrade-body">
+                <div class="body-segment"></div>
+                <div class="body-segment"></div>
+                <div class="body-segment"></div>
+                <div class="body-segment"></div>
+
+                <div class="tardigrade-head">
+                    <div class="tardigrade-eye"></div>
+                </div>
+
+                <div class="tardigrade-leg leg-one"></div>
+                <div class="tardigrade-leg leg-two"></div>
+                <div class="tardigrade-leg leg-three"></div>
+                <div class="tardigrade-leg leg-four"></div>
+                <div class="tardigrade-leg leg-five"></div>
+                <div class="tardigrade-leg leg-six"></div>
+                <div class="tardigrade-leg leg-seven"></div>
+                <div class="tardigrade-leg leg-eight"></div>
+            </div>
+
+        </div>
+
+        <!-- Tun tardigrade -->
+        <div id="tun-shape">
+            <div class="tun-body"></div>
+        </div>
+
+    </div>
+
+    <div id="visual-environment-status">
+        <p id="visual-state">State: Active</p>
+        <p id="visual-condition">Environment: Normal</p>
+        <p id="visual-mode">Mode: Waiting for input</p>
+    </div>
+
+    <p id="scene-caption">
+        Adjust the experiment controls below to observe changes.
+    </p>
+
+</section>
+    <!-- EXPERIMENT 1 -->
+
+    <section class="experiment-card">
+
+        <p class="module-label">MODULE 01</p>
+        <h2>Cryptobiosis & Tardigrade Survival</h2>
+
+        <p class="description">
+            Explore how humidity, temperature and the selected
+            biological state influence the modelled stress index.
+        </p>
+
+        <form class="experiment-form" data-mode="cryptobiosis">
+
+            <label>
+                Environmental Humidity:
+                <span id="humidity-value">50</span>%
+            </label>
+
+            <input type="range"
+                   name="humidity"
+                   min="0"
+                   max="100"
+                   value="50"
+                   oninput="updateValue(this, 'humidity-value')">
+
+            <label>
+                Temperature:
+                <span id="crypto-temp-value">20</span> °C
+            </label>
+
+            <input type="range"
+                   name="temperature"
+                   min="-20"
+                   max="50"
+                   value="20"
+                   oninput="updateValue(this, 'crypto-temp-value')">
+
+            <label>Tardigrade State</label>
+
+            <select name="state">
+                <option value="active">Active State</option>
+                <option value="tun">Tun State (Cryptobiosis)</option>
+            </select>
+
+            <button type="submit" class="run-button">
+                Run Cryptobiosis Experiment
+            </button>
+
+        </form>
+
+        <div class="result" id="cryptobiosis-result">
+            <p>Run the experiment to view your results.</p>
+        </div>
+
+    </section>
+
+
+    <!-- EXPERIMENT 2 -->
+
+    <section class="experiment-card">
+
+        <p class="module-label">MODULE 02</p>
+        <h2>Space Environmental Conditions</h2>
+
+        <p class="description">
+            Investigate selected space-related environmental
+            stress factors.
+        </p>
+
+        <form class="experiment-form" data-mode="space">
+
+            <label>
+                Radiation Level:
+                <span id="radiation-value">5</span> / 10
+            </label>
+
+            <input type="range"
+                   name="radiation"
+                   min="0"
+                   max="10"
+                   step="0.1"
+                   value="5"
+                   oninput="updateValue(this, 'radiation-value')">
+
+            <label>
+                Vacuum Level:
+                <span id="vacuum-value">0.5</span>
+            </label>
+
+            <input type="range"
+                   name="vacuum"
+                   min="0"
+                   max="1"
+                   step="0.01"
+                   value="0.5"
+                   oninput="updateValue(this, 'vacuum-value')">
+
+            <label>
+                Temperature:
+                <span id="space-temp-value">-50</span> °C
+            </label>
+
+            <input type="range"
+                   name="temperature"
+                   min="-150"
+                   max="120"
+                   value="-50"
+                   oninput="updateValue(this, 'space-temp-value')">
+
+            <label class="checkbox-label">
+                <input type="checkbox" name="microgravity">
+                Include microgravity as an experimental condition
+            </label>
+
+            <button type="submit" class="run-button">
+                Run Space Experiment
+            </button>
+
+        </form>
+
+        <div class="result" id="space-result">
+            <p>Run the experiment to view your results.</p>
+        </div>
+
+    </section>
+
+
+    <!-- EXPERIMENT 3 -->
+
+    <section class="experiment-card">
+
+        <p class="module-label">MODULE 03</p>
+        <h2>Combined Survival Experiment</h2>
+
+        <p class="description">
+            Combine cryptobiosis-related conditions with
+            selected space environmental conditions.
+        </p>
+
+        <form class="experiment-form" data-mode="combined">
+
+            <h3>Biological Conditions</h3>
+
+            <label>
+                Humidity:
+                <span id="combined-humidity-value">30</span>%
+            </label>
+
+            <input type="range"
+                   name="humidity"
+                   min="0"
+                   max="100"
+                   value="30"
+                   oninput="updateValue(this, 'combined-humidity-value')">
+
+            <label>
+                Biological Temperature:
+                <span id="bio-temp-value">20</span> °C
+            </label>
+
+            <input type="range"
+                   name="biological_temperature"
+                   min="-20"
+                   max="50"
+                   value="20"
+                   oninput="updateValue(this, 'bio-temp-value')">
+
+            <label>Biological State</label>
+
+            <select name="state">
+                <option value="active">Active State</option>
+                <option value="tun" selected>Tun State</option>
+            </select>
+
+            <h3>Space Conditions</h3>
+
+            <label>
+                Radiation:
+                <span id="combined-radiation-value">5</span> / 10
+            </label>
+
+            <input type="range"
+                   name="radiation"
+                   min="0"
+                   max="10"
+                   step="0.1"
+                   value="5"
+                   oninput="updateValue(this, 'combined-radiation-value')">
+
+            <label>
+                Vacuum:
+                <span id="combined-vacuum-value">0.5</span>
+            </label>
+
+            <input type="range"
+                   name="vacuum"
+                   min="0"
+                   max="1"
+                   step="0.01"
+                   value="0.5"
+                   oninput="updateValue(this, 'combined-vacuum-value')">
+
+            <label>
+                Space Temperature:
+                <span id="combined-space-temp-value">-50</span> °C
+            </label>
+
+            <input type="range"
+                   name="space_temperature"
+                   min="-150"
+                   max="120"
+                   value="-50"
+                   oninput="updateValue(this, 'combined-space-temp-value')">
+
+            <label class="checkbox-label">
+                <input type="checkbox" name="microgravity">
+                Include microgravity
+            </label>
+
+            <button type="submit" class="run-button">
+                Run Combined Experiment
+            </button>
+
+        </form>
+
+        <div class="result" id="combined-result">
+            <p>Run the experiment to view your results.</p>
+        </div>
+
+        <div class="combined-comparison">
+            <h3>Experiment Comparison</h3>
+            <p class="description">
+                Run the combined experiment with different conditions.
+                Each successful run will be added here so you can compare
+                the modelled stress indices.
+            </p>
+
+            <div class="table-wrapper">
+                <table class="analyzer-table" id="combined-comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Run</th>
+                            <th>Humidity</th>
+                            <th>Bio. Temp.</th>
+                            <th>State</th>
+                            <th>Radiation</th>
+                            <th>Vacuum</th>
+                            <th>Space Temp.</th>
+                            <th>Microgravity</th>
+                            <th>Crypto. Index</th>
+                            <th>Space Index</th>
+                            <th>Combined Index</th>
+                        </tr>
+                    </thead>
+                    <tbody id="combined-comparison-body">
+                        <tr id="no-comparison-runs">
+                            <td colspan="11">No experiments compared yet. Run the experiment to add the first result.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <button type="button" class="run-button" id="clear-comparisons">
+                Clear Comparison History
+            </button>
+        </div>
+
+    </section>
+
+
+    <!-- RESEARCH DATA ANALYZER -->
+
+    <section class="experiment-card analyzer-card">
+
+        <p class="module-label">MODULE 04</p>
+
+        <h2>Research Data Analyzer</h2>
+
+        <p class="description">
+            Import experimental datasets to explore measurements,
+            calculate statistics and investigate radiation tolerance.
+        </p>
+
+        <div class="analyzer-notice">
+            Upload CSV or Excel files containing experimental data.
+            Synthetic datasets can also be used for demonstration.
+        </div>
+
+        {% if analyzer_error %}
+            <div class="analyzer-error">
+                {{ analyzer_error }}
+            </div>
+        {% endif %}
+
+        <!-- DATASET UPLOAD -->
+
+        <form
+            action="{{ url_for('lab.upload_dataset') }}"
+            method="POST"
+            enctype="multipart/form-data"
+            class="upload-form">
+
+            <input
+                type="hidden"
+                name="csrf_token"
+                value="{{ csrf_token() }}">
+
+            <label for="dataset">
+                Select your research dataset
+            </label>
+
+            <input
+                type="file"
+                id="dataset"
+                name="dataset"
+                accept=".csv,.xlsx,.xls"
+                required>
+
+            <button type="submit" class="run-button">
+                Upload and Analyze Dataset
+            </button>
+
+        </form>
+
+        {% if overview %}
+
+            <div class="dataset-results">
+
+                <h3>Dataset Overview</h3>
+
+                <p>
+                    Uploaded file:
+                    <strong>{{ dataset_name }}</strong>
+                </p>
+
+                <div class="dataset-stats">
+
+                    <div class="dataset-stat">
+                        <span>{{ overview.rows }}</span>
+                        <p>Observations</p>
+                    </div>
+
+                    <div class="dataset-stat">
+                        <span>{{ overview.columns }}</span>
+                        <p>Columns</p>
+                    </div>
+
+                    <div class="dataset-stat">
+                        <span>
+                            {{ overview.numeric_columns|length }}
+                        </span>
+                        <p>Numeric Columns</p>
+                    </div>
+
+                </div>
+
+                <!-- MISSING VALUES -->
+
+                <h3>Missing Values</h3>
+
+                <div class="table-wrapper">
+                    <table class="analyzer-table">
+                        <thead>
+                            <tr>
+                                <th>Column</th>
+                                <th>Missing Values</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            {% for column, count in overview.missing_values.items() %}
+                                <tr>
+                                    <td>{{ column }}</td>
+                                    <td>{{ count }}</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- DATA PREVIEW -->
+
+                <h3>Dataset Preview</h3>
+
+                <p class="description">
+                    Showing the first 10 observations.
+                </p>
+
+                <div class="table-wrapper">
+                    <table class="analyzer-table">
+                        <thead>
+                            <tr>
+                                {% for column in overview.column_names %}
+                                    <th>{{ column }}</th>
+                                {% endfor %}
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            {% for row in preview %}
+                                <tr>
+                                    {% for column in overview.column_names %}
+                                        <td>{{ row[column] }}</td>
+                                    {% endfor %}
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- DESCRIPTIVE STATISTICS -->
+
+                <h3>Descriptive Statistics</h3>
+
+                <div class="table-wrapper">
+                    <table class="analyzer-table">
+
+                        <thead>
+                            <tr>
+                                <th>Variable</th>
+                                <th>Count</th>
+                                <th>Mean</th>
+                                <th>Std. Dev.</th>
+                                <th>Minimum</th>
+                                <th>Maximum</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            {% for column, values in statistics.items() %}
+                                <tr>
+                                    <td>{{ column }}</td>
+                                    <td>{{ values.get('count', '—')|round(2) }}</td>
+                                    <td>{{ values.get('mean', '—')|round(2) }}</td>
+                                    <td>{{ values.get('std', '—')|round(2) }}</td>
+                                    <td>{{ values.get('min', '—')|round(2) }}</td>
+                                    <td>{{ values.get('max', '—')|round(2) }}</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+
+                    </table>
+                </div>
+
+                <!-- CORRELATION ANALYSIS -->
+
+                <h3>Correlation Analysis</h3>
+
+                {% if correlations %}
+
+                    <div class="table-wrapper">
+                        <table class="analyzer-table">
+
+                            <thead>
+                                <tr>
+                                    <th>Variable</th>
+
+                                    {% for column in correlations.keys() %}
+                                        <th>{{ column }}</th>
+                                    {% endfor %}
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                {% for row_name, values in correlations.items() %}
+                                    <tr>
+                                        <td>{{ row_name }}</td>
+
+                                        {% for column in correlations.keys() %}
+                                            <td>{{ values.get(column, '—') }}</td>
+                                        {% endfor %}
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+
+                        </table>
+                    </div>
+
+                {% else %}
+
+                    <p>
+                        At least two numeric columns are required
+                        for correlation analysis.
+                    </p>
+
+                {% endif %}
+
+
+                <!-- RADIATION TOLERANCE ANALYSIS -->
+
+                <h3>Radiation Tolerance Analysis</h3>
+
+                <p class="description">
+                    Select the columns representing radiation dose
+                    and animal activity.
+                </p>
+
+                <form
+                    action="{{ url_for('lab.analyze_radiation') }}"
+                    method="POST"
+                    class="experiment-form">
+
+                    <input
+                        type="hidden"
+                        name="csrf_token"
+                        value="{{ csrf_token() }}">
+
+                    <input
+                        type="hidden"
+                        name="dataset_file"
+                        value="{{ dataset_file }}">
+
+                    <label for="dose_column">
+                        Radiation Dose Column
+                    </label>
+
+                    <select name="dose_column" id="dose_column" required>
+                        <option value="">Select dose column</option>
+
+                        {% for column in numeric_columns %}
+                            <option
+                                value="{{ column }}"
+                                {% if selected_dose is defined and selected_dose == column %}
+                                    selected
+                                {% endif %}>
+                                {{ column }}
+                            </option>
+                        {% endfor %}
+                    </select>
+
+                    <label for="survival_column">
+                        Animal Activity Column
+                    </label>
+
+                    <select name="survival_column" id="survival_column" required>
+    <option value="">Select activity column</option>
+
+    {% for column in numeric_columns %}
+        <option value="{{ column }}"
+            {% if selected_survival is defined and selected_survival == column %}selected{% endif %}>
+            {{ column }}
+        </option>
+    {% endfor %}
+</select>
+
+                    <button type="submit" class="run-button">
+                        Run Radiation Analysis
+                    </button>
+
+                </form>
+
+
+                <!-- RADIATION ANALYSIS RESULTS -->
+
+                {% if radiation_result %}
+
+                    <div class="radiation-results">
+
+                        <h3>Radiation Analysis Results</h3>
+
+                        <div class="dataset-stats">
+
+                            <div class="dataset-stat">
+                                <span>{{ radiation_result.observations }}</span>
+                                <p>Valid Observations</p>
+                            </div>
+
+                            <div class="dataset-stat">
+                                <span>{{ radiation_result.mean_dose }}</span>
+                                <p>Mean Dose (Gy)</p>
+                            </div>
+
+                            <div class="dataset-stat">
+                                <span>{{ radiation_result.mean_activity }}%</span>
+                                <p>Mean Animal Activity</p>
+                            </div>
+
+                            <div class="dataset-stat">
+                                <span>{{ radiation_result.correlation }}</span>
+                                <p>Dose-Activity Correlation</p>
+                            </div>
+
+                        </div>
+
+                        <h3>Radiation Dose vs Animal Activity</h3>
+
+                        <div class="chart-container">
+                            <canvas
+                                id="radiationChart"
+                                data-labels='{{ radiation_result.chart_labels | tojson | forceescape }}'
+                                data-values='{{ radiation_result.chart_values | tojson | forceescape }}'>
+                            </canvas>
+                        </div>
+
+                        <p class="description">
+                            Correlation describes the strength and direction
+                            of a linear relationship. It does not establish
+                            causation. Animal activity is not equivalent to survival.
+                        </p>
+
+                    </div>
+
+                {% endif %}
+
+            </div>
+
+        {% endif %}
+
+    </section>
+
+</section>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script src="{{ url_for('static', filename='js/lab.js') }}"></script>
+
+
+<!-- RADIATION DATASET CHART -->
+
+{% if radiation_result %}
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    const canvas = document.getElementById("radiationChart");
+
+    if (!canvas) {
+        console.error("Radiation chart canvas not found.");
+        return;
+    }
+
+    if (typeof Chart === "undefined") {
+        console.error("Chart.js has not loaded.");
+        return;
+    }
+
+    const labels = JSON.parse(canvas.dataset.labels);
+    const values = JSON.parse(canvas.dataset.values);
+
+    const points = labels.map((dose, index) => ({
+        x: Number(dose),
+        y: Number(values[index])
+    }));
+
+    new Chart(canvas, {
+        type: "scatter",
+
+        data: {
+            datasets: [{
+                label: "Animal Activity (%)",
+                data: points,
+                backgroundColor: "#9aa9ff",
+                borderColor: "#9aa9ff",
+                pointRadius: 6,
+                pointHoverRadius: 9
+            }]
+        },
+
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+
+            plugins: {
+                legend: {
+                    labels: {
+                        color: "#e8eaf2"
+                    }
+                },
+
+                title: {
+                    display: true,
+                    text: "Radiation Dose vs Animal Activity",
+                    color: "#e8eaf2"
+                },
+
+                tooltip: {
+                    callbacks: {
+                        label: function(context) {
+                            return "Dose: " + context.parsed.x +
+                                " Gy, Activity: " + context.parsed.y + "%";
+                        }
+                    }
+                }
+            },
+
+            scales: {
+                x: {
+                    type: "linear",
+
+                    title: {
+                        display: true,
+                        text: "Radiation Dose (Gy)",
+                        color: "#e8eaf2"
+                    },
+
+                    ticks: {
+                        color: "#aab5c9"
+                    },
+
+                    grid: {
+                        color: "#303d55"
+                    }
+                },
+
+                y: {
+                    beginAtZero: true,
+                    min: 0,
+                    max: 100,
+
+                    title: {
+                        display: true,
+                        text: "Active Animals (%)",
+                        color: "#e8eaf2"
+                    },
+
+                    ticks: {
+                        color: "#aab5c9"
+                    },
+
+                    grid: {
+                        color: "#303d55"
+                    }
+                }
+            }
+        }
+    });
+
+});
+</script>
+{% endif %}
+
+{% endblock %}

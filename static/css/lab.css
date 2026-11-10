@@ -1,0 +1,716 @@
+
+/* =================================
+   VIRTUAL LAB - MAIN LAYOUT
+================================= */
+
+.lab-container {
+    padding: 65px 8%;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.lab-heading {
+    margin-bottom: 35px;
+}
+
+.lab-heading h1 {
+    font-size: clamp(38px, 6vw, 65px);
+    margin-bottom: 15px;
+}
+
+.lab-heading h1 span {
+    color: #8c9eff;
+}
+
+.lab-heading > p:last-child {
+    color: #a4aec0;
+    max-width: 650px;
+}
+
+.scientific-notice {
+    background: #18243a;
+    border-left: 4px solid #8c9eff;
+    padding: 18px;
+    margin-bottom: 35px;
+    border-radius: 5px;
+}
+
+.scientific-notice p {
+    color: #a4aec0;
+    margin-top: 5px;
+}
+
+
+/* =================================
+   EXPERIMENT CARDS
+================================= */
+
+.experiment-card {
+    background: #101a2b;
+    border: 1px solid #263044;
+    border-radius: 10px;
+    padding: 30px;
+    margin-bottom: 30px;
+}
+
+.module-label {
+    color: #8c9eff;
+    font-size: 12px;
+    letter-spacing: 3px;
+    margin-bottom: 10px;
+}
+
+.experiment-card h2 {
+    font-size: 25px;
+    margin-bottom: 10px;
+}
+
+.experiment-card h3 {
+    font-size: 17px;
+    margin: 25px 0 15px;
+    color: #8c9eff;
+}
+
+.description {
+    color: #a4aec0;
+    margin-bottom: 25px;
+}
+
+
+/* =================================
+   EXPERIMENT FORMS
+================================= */
+
+.experiment-form {
+    display: flex;
+    flex-direction: column;
+    gap: 13px;
+}
+
+.experiment-form label {
+    font-size: 14px;
+    color: #e2e7f0;
+}
+
+.experiment-form input[type="range"] {
+    width: 100%;
+    accent-color: #8c9eff;
+    cursor: pointer;
+    margin-bottom: 15px;
+}
+
+.experiment-form select {
+    padding: 12px;
+    background: #080d18;
+    color: white;
+    border: 1px solid #36445d;
+    border-radius: 5px;
+    width: 100%;
+}
+
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 10px 0;
+}
+
+.checkbox-label input {
+    accent-color: #8c9eff;
+    width: 17px;
+    height: 17px;
+}
+
+.run-button {
+    background: #8c9eff;
+    color: #080d18;
+    border: none;
+    padding: 14px 20px;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 15px;
+    transition: 0.2s;
+}
+
+.run-button:hover {
+    background: #b0bcff;
+}
+
+.run-button:disabled {
+    opacity: 0.6;
+    cursor: wait;
+}
+
+
+/* =================================
+   EXPERIMENT RESULTS
+================================= */
+
+.result {
+    margin-top: 25px;
+    padding: 20px;
+    background: #080d18;
+    border: 1px solid #263044;
+    border-radius: 7px;
+    color: #dce3f2;
+}
+
+.result h3 {
+    margin-top: 0;
+    color: #8c9eff;
+}
+
+.result p {
+    margin: 8px 0;
+    color: #a4aec0;
+}
+
+.result strong {
+    color: white;
+}
+
+.stress-number {
+    font-size: 34px;
+    font-weight: bold;
+    color: #8c9eff;
+    margin: 10px 0;
+}
+
+.result-error {
+    color: #ff9999 !important;
+}
+
+
+/* =================================
+   CHARTS
+================================= */
+
+.chart-container {
+    position: relative;
+    width: 100%;
+    height: 380px;
+    min-height: 300px;
+    margin: 25px 0;
+    padding: 20px;
+    background: #111827;
+    border: 1px solid #303d55;
+    border-radius: 10px;
+    box-sizing: border-box;
+}
+
+.chart-container canvas {
+    display: block;
+    width: 100% !important;
+    height: 100% !important;
+}
+
+.graph-card {
+    margin-top: 30px;
+}
+
+
+/* =================================
+   RESEARCH DATA ANALYZER
+================================= */
+
+.analyzer-card {
+    margin-top: 35px;
+}
+
+.analyzer-notice {
+    padding: 16px;
+    margin: 20px 0;
+    background: rgba(140, 158, 255, 0.08);
+    border: 1px solid #35436a;
+    border-radius: 8px;
+    color: #b8c4e5;
+}
+
+
+/* =================================
+   DATASET UPLOAD
+================================= */
+
+.upload-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin: 25px 0;
+}
+
+.upload-form label {
+    color: #e2e7f0;
+}
+
+.upload-form input[type="file"] {
+    padding: 15px;
+    width: 100%;
+    background: #101827;
+    color: #e8eaf2;
+    border: 1px solid #35436a;
+    border-radius: 8px;
+    box-sizing: border-box;
+}
+
+.dataset-results {
+    margin-top: 35px;
+}
+
+.dataset-results h3,
+.radiation-results h3 {
+    margin: 30px 0 15px;
+    color: #e8eaf2;
+}
+
+
+/* =================================
+   DATASET SUMMARY CARDS
+================================= */
+
+.dataset-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 15px;
+    margin: 20px 0;
+}
+
+.dataset-stat {
+    padding: 20px;
+    background: #111a2a;
+    border: 1px solid #303d55;
+    border-radius: 8px;
+}
+
+.dataset-stat span {
+    display: block;
+    color: #9aa9ff;
+    font-size: 25px;
+    font-weight: 700;
+    overflow-wrap: anywhere;
+}
+
+.dataset-stat p {
+    margin-top: 8px;
+    color: #aab5c9;
+}
+
+
+/* =================================
+   DATA TABLES
+================================= */
+
+.table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+    margin: 15px 0 25px;
+}
+
+.analyzer-table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 550px;
+}
+
+.analyzer-table th,
+.analyzer-table td {
+    padding: 13px 16px;
+    text-align: left;
+    border-bottom: 1px solid #30394b;
+    white-space: nowrap;
+}
+
+.analyzer-table th {
+    background: #182337;
+    color: #aab5ff;
+}
+
+.analyzer-table td {
+    color: #d5dbea;
+}
+
+.analyzer-table tr:hover td {
+    background: #151f31;
+}
+
+
+/* =================================
+   ANALYZER DROPDOWNS
+================================= */
+
+.analyzer-card select {
+    padding: 13px;
+    background: #101827;
+    color: white;
+    border: 1px solid #35436a;
+    border-radius: 7px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+
+/* =================================
+   ANALYZER ERRORS
+================================= */
+
+.analyzer-error {
+    padding: 15px;
+    margin: 20px 0;
+    color: #ffaaaa;
+    background: rgba(180, 40, 40, 0.12);
+    border: 1px solid #843d3d;
+    border-radius: 8px;
+}
+
+
+/* =================================
+   RADIATION ANALYSIS RESULTS
+================================= */
+
+.radiation-results {
+    margin-top: 30px;
+    padding: 20px;
+    background: #101827;
+    border: 1px solid #35436a;
+    border-radius: 8px;
+}
+
+.radiation-results .chart-container {
+    height: 400px;
+    min-height: 350px;
+    margin: 25px 0;
+}
+
+#radiationChart {
+    width: 100% !important;
+    height: 100% !important;
+}
+
+
+/* =================================
+   RESPONSIVE DESIGN
+================================= */
+
+@media (max-width: 600px) {
+
+    .lab-container {
+        padding: 40px 6%;
+    }
+
+    .experiment-card {
+        padding: 20px;
+    }
+
+    .experiment-card h2 {
+        font-size: 21px;
+    }
+
+    .chart-container {
+        height: 300px;
+        min-height: 280px;
+        padding: 12px;
+    }
+
+    .radiation-results {
+        padding: 15px;
+    }
+
+    .radiation-results .chart-container {
+        height: 320px;
+        min-height: 300px;
+    }
+
+    .dataset-stats {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+/* =================================
+   INTERACTIVE TARDIGRADE LAB
+================================= */
+
+.visual-lab-card {
+    background: #101a2b;
+    border: 1px solid #303d55;
+    border-radius: 12px;
+    padding: 25px;
+    margin-bottom: 35px;
+    overflow: hidden;
+}
+
+.visual-lab-card > p {
+    color: #a4aec0;
+}
+
+.tardigrade-scene {
+    position: relative;
+    min-height: 300px;
+    margin: 25px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background: linear-gradient(180deg, #101d35, #0b1425);
+    border: 1px solid #35436a;
+    border-radius: 12px;
+    transition: background 0.5s ease;
+}
+
+.environment-particle {
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: #aebfff;
+    box-shadow: 0 0 10px #8c9eff;
+    animation: particle-float 5s ease-in-out infinite;
+}
+
+.environment-particle:nth-child(1) {
+    top: 20%;
+    left: 15%;
+}
+
+.environment-particle:nth-child(2) {
+    top: 65%;
+    left: 25%;
+    animation-delay: 1s;
+}
+
+.environment-particle:nth-child(3) {
+    top: 25%;
+    right: 20%;
+    animation-delay: 2s;
+}
+
+.environment-particle:nth-child(4) {
+    bottom: 20%;
+    right: 15%;
+    animation-delay: 3s;
+}
+
+@keyframes particle-float {
+    0%, 100% {
+        transform: translateY(0);
+        opacity: 0.4;
+    }
+
+    50% {
+        transform: translateY(-18px);
+        opacity: 1;
+    }
+}
+
+/* Active tardigrade */
+
+#tardigrade {
+    position: relative;
+    width: 270px;
+    height: 190px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: tardigrade-float 3s ease-in-out infinite;
+    transition: opacity 0.4s, transform 0.4s;
+}
+
+.tardigrade-body {
+    position: relative;
+    width: 190px;
+    height: 85px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 48%;
+    background: linear-gradient(180deg, #e8bd91, #c98b68, #9c624e);
+    border: 2px solid #f0c9a4;
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.3);
+    z-index: 2;
+}
+
+.body-segment {
+    width: 25%;
+    height: 75%;
+    margin: 0 2px;
+    border-radius: 45%;
+    background: rgba(255, 224, 190, 0.2);
+    border-right: 1px solid rgba(100, 55, 40, 0.25);
+}
+
+.tardigrade-head {
+    position: absolute;
+    right: -15px;
+    top: 20px;
+    width: 45px;
+    height: 48px;
+    border-radius: 45%;
+    background: #d99c76;
+    border: 2px solid #f0c9a4;
+}
+
+.tardigrade-eye {
+    position: absolute;
+    top: 13px;
+    right: 10px;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #182033;
+}
+
+.tardigrade-leg {
+    position: absolute;
+    width: 16px;
+    height: 35px;
+    background: #c98b68;
+    border-radius: 50%;
+    border: 1px solid #80513e;
+    z-index: 1;
+}
+
+.leg-one {
+    left: 20px;
+    bottom: -23px;
+    transform: rotate(25deg);
+}
+
+.leg-two {
+    left: 65px;
+    bottom: -25px;
+}
+
+.leg-three {
+    left: 110px;
+    bottom: -25px;
+}
+
+.leg-four {
+    left: 155px;
+    bottom: -22px;
+    transform: rotate(-25deg);
+}
+
+.leg-five {
+    left: 20px;
+    top: -22px;
+    transform: rotate(-25deg);
+}
+
+.leg-six {
+    left: 65px;
+    top: -25px;
+}
+
+.leg-seven {
+    left: 110px;
+    top: -25px;
+}
+
+.leg-eight {
+    left: 155px;
+    top: -22px;
+    transform: rotate(25deg);
+}
+
+@keyframes tardigrade-float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-7px);
+    }
+}
+
+/* Tun state */
+
+#tun-shape {
+    position: absolute;
+    width: 115px;
+    height: 95px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transform: scale(0.5);
+    transition: 0.5s ease;
+}
+
+.tun-body {
+    width: 85px;
+    height: 85px;
+    border-radius: 45%;
+    background: linear-gradient(145deg, #d8a77d, #9c624e);
+    border: 3px solid #f0c9a4;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+}
+
+/* JavaScript visibility controls */
+
+.is-hidden {
+    opacity: 0 !important;
+    visibility: hidden !important;
+    transform: scale(0.5);
+    pointer-events: none;
+}
+
+.is-visible {
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: scale(1) !important;
+}
+
+/* Stress environment */
+
+.tardigrade-scene.environment-stress {
+    background: linear-gradient(180deg, #281c30, #151321);
+    border-color: #8a5365;
+}
+
+.tardigrade-scene.environment-stress .environment-particle {
+    background: #ff9985;
+    box-shadow: 0 0 10px #ff6464;
+}
+
+/* Status panel */
+
+#visual-environment-status {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 18px;
+    background: #080d18;
+    border: 1px solid #303d55;
+    border-radius: 8px;
+}
+
+#visual-environment-status p {
+    color: #dce3f2;
+    font-size: 14px;
+}
+
+#scene-caption {
+    margin-top: 15px;
+    color: #a4aec0;
+    text-align: center;
+    font-size: 13px;
+}
+
+@media (max-width: 600px) {
+    .visual-lab-card {
+        padding: 16px;
+    }
+
+    .tardigrade-scene {
+        min-height: 260px;
+    }
+
+    #tardigrade {
+        transform: scale(0.8);
+    }
+
+    #visual-environment-status {
+        flex-direction: column;
+    }
+}

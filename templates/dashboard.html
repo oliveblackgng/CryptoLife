@@ -1,0 +1,60 @@
+
+{% extends "base.html" %}
+
+{% block title %}Dashboard | CryptoLife{% endblock %}
+
+{% block content %}
+
+<section class="dashboard">
+
+    <p class="eyebrow">YOUR RESEARCH WORKSPACE</p>
+
+    <h1>Welcome, {{ current_user.username }}.</h1>
+
+    <p>Manage your research and explore scientific publications.</p>
+
+    <div class="feature-grid">
+
+        <div class="feature">
+            <h3>{{ saved_count }}</h3>
+            <p>Saved Research Papers</p>
+        </div>
+
+        <div class="feature">
+            <h3>{{ collection_count }}</h3>
+            <p>Research Collections</p>
+        </div>
+
+        <div class="feature">
+            <h3>{{ current_user.role|title }}</h3>
+            <p>Account Type</p>
+        </div>
+
+    </div>
+
+    
+<div class="dashboard-links">
+
+    <a href="{{ url_for('lab.home') }}">
+        Virtual Lab →
+    </a>
+
+    <a href="{{ url_for('research.library') }}">
+        Explore Research →
+    </a>
+
+    <a href="{{ url_for('research.my_research') }}">
+        My Research Library →
+    </a>
+
+    <a href="{{ url_for('dashboard.collections') }}">
+        My Collections →
+    </a>
+
+</div>
+
+    
+
+</section>
+
+{% endblock %}

@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+
+{% block title %}My Collections | CryptoLife{% endblock %}
+
+{% block content %}
+
+<link rel="stylesheet"
+      href="{{ url_for('static', filename='css/research.css') }}">
+
+<section class="research-container">
+
+    <p class="eyebrow">YOUR RESEARCH WORKSPACE</p>
+
+    <h1>My Collections</h1>
+
+    <p class="page-description">
+        Organize your scientific research papers by topic.
+    </p>
+
+    <a href="{{ url_for('dashboard.home') }}" class="back-link">
+        ← Back to Dashboard
+    </a>
+
+    <div class="paper-results">
+
+        {% if collections %}
+
+            {% for collection in collections %}
+
+                <article class="paper-card">
+
+                    <h2>{{ collection.name }}</h2>
+
+                    <p class="paper-abstract">
+                        {{ collection.description or
+                           "No description available." }}
+                    </p>
+
+                    <p>
+                        {{ collection.papers|length }}
+                        {% if collection.papers|length == 1 %}
+                            paper
+                        {% else %}
+                            papers
+                        {% endif %}
+                    </p>
+
+                    <a href="{{ url_for('dashboard.view_collection',
+                                        collection_id=collection.id) }}"
+                       class="view-collection-button">
+                        View Collection →
+                    </a>
+
+                </article>
+
+            {% endfor %}
+
+        {% else %}
+
+            <div class="empty-state">
+
+                <h2>No collections yet.</h2>
+
+                <p>
+                    Your research collections will appear here.
+                </p>
+
+            </div>
+
+        {% endif %}
+
+    </div>
+
+</section>
+
+{% endblock %}

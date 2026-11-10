@@ -1,0 +1,17 @@
+species,biological_state,radiation_type,dose_gy,survival_percentage
+Species_A,Hydrated,Gamma,0,100
+Species_A,Hydrated,Gamma,500,98
+Species_A,Hydrated,Gamma,1000,95
+Species_A,Hydrated,Gamma,2000,88
+Species_A,Hydrated,Gamma,3000,72
+Species_A,Hydrated,Gamma,4000,48
+Species_A,Hydrated,Gamma,5000,22
+Species_A,Hydrated,Gamma,6000,5
+Species_A,Desiccated,Gamma,0,100
+Species_A,Desiccated,Gamma,500,99
+Species_A,Desiccated,Gamma,1000,96
+Species_A,Desiccated,Gamma,2000,90
+Species_A,Desiccated,Gamma,3000,75
+Species_A,Desiccated,Gamma,4000,52
+Species_A,Desiccated,Gamma,5000,25
+Species_A,Desiccated,Gamma,6000,8

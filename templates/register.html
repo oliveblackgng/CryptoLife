@@ -1,0 +1,36 @@
+
+{% extends "base.html" %}
+
+{% block title %}Register | CryptoLife{% endblock %}
+
+{% block content %}
+
+<section class="auth-container">
+
+    <h1>Create Account</h1>
+    <p>Join the CryptoLife research community.</p>
+
+    <form method="POST">
+
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+
+        <label>Username</label>
+        <input type="text" name="username" required maxlength="80">
+
+        <label>Email Address</label>
+        <input type="email" name="email" required>
+
+        <label>Password</label>
+        <input type="password" name="password" required minlength="8">
+
+        <button type="submit" class="btn">Register</button>
+
+    </form>
+
+    <p>Already registered?
+        <a href="{{ url_for('auth.login') }}">Login</a>
+    </p>
+
+</section>
+
+{% endblock %}

@@ -1,0 +1,53 @@
+
+{% extends "base.html" %}
+
+{% block title %}CryptoLife | Research Beyond Limits{% endblock %}
+
+{% block content %}
+
+<section class="hero">
+    <p class="eyebrow">BIOLOGY · EXTREMOPHILES · SPACE RESEARCH</p>
+
+    <h1>
+        LIFE BEYOND<br>
+        <span>LIMITS.</span>
+    </h1>
+
+    <p>
+        Discover scientific research on cryptobiosis, extreme survival
+        mechanisms and their potential applications in space exploration.
+    </p>
+
+    <div class="hero-buttons">
+        <a href="{{ url_for('auth.register') }}" class="btn">
+            Join CryptoLife
+        </a>
+
+        <a href="{{ url_for('auth.login') }}" class="btn secondary">
+            Sign In
+        </a>
+    </div>
+</section>
+
+<section class="content-section">
+    <h2>A platform for scientific discovery.</h2>
+
+    <div class="feature-grid">
+        <div class="feature">
+            <h3>Research Discovery</h3>
+            <p>Explore scientific publications and research findings.</p>
+        </div>
+
+        <div class="feature">
+            <h3>Research Collections</h3>
+            <p>Save and organize publications into personal collections.</p>
+        </div>
+
+        <div class="feature">
+            <h3>Scientific Knowledge</h3>
+            <p>Explore organisms, molecular mechanisms and space biology.</p>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

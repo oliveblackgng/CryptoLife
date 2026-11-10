@@ -1,0 +1,90 @@
+
+{% extends "base.html" %}
+
+{% block title %}Research Library | CryptoLife{% endblock %}
+
+{% block content %}
+
+<link rel="stylesheet"
+      href="{{ url_for('static', filename='css/research.css') }}">
+
+<meta name="csrf-token" content="{{ csrf_token() }}">
+
+<section class="research-container">
+
+    <div class="research-heading">
+        <p class="eyebrow">CRYPTO LIFE / RESEARCH DATABASE</p>
+
+        <h1>Research <span>Library</span></h1>
+
+        <p>
+            Discover scientific publications on cryptobiosis,
+            tardigrades, extremophiles and space biology.
+        </p>
+    </div>
+
+    <div class="research-actions">
+        <a href="{{ url_for('research.my_research') }}">
+            My Saved Research →
+        </a>
+    </div>
+
+    <div class="search-panel">
+
+        <form id="search-form">
+
+            <input
+                type="text"
+                id="search-query"
+                placeholder="Search papers, topics or authors..."
+                required
+            >
+
+            <button type="submit" id="search-button">
+                Search Papers
+            </button>
+
+            <div class="filters">
+
+                <div>
+                    <label for="year-filter">Publication year</label>
+
+                    <input
+                        type="number"
+                        id="year-filter"
+                        placeholder="e.g. 2024"
+                        min="1800"
+                        max="2100"
+                    >
+                </div>
+
+                <label class="oa-filter">
+                    <input type="checkbox" id="oa-filter">
+                    Open-access papers only
+                </label>
+
+            </div>
+
+        </form>
+
+    </div>
+
+    <div id="search-status"></div>
+
+    <div id="paper-results" class="paper-results">
+
+        <div class="empty-state">
+            <h3>Start exploring scientific research.</h3>
+            <p>
+                Search for tardigrades, cryptobiosis,
+                radiation resistance or space biology.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+<script src="{{ url_for('static', filename='js/research.js') }}"></script>
+
+{% endblock %}

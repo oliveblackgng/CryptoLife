@@ -1,0 +1,182 @@
+
+{% extends "base.html" %}
+
+{% block title %}My Research Library | CryptoLife{% endblock %}
+
+{% block content %}
+
+<link rel="stylesheet"
+      href="{{ url_for('static', filename='css/research.css') }}">
+
+<meta name="csrf-token" content="{{ csrf_token() }}">
+
+<section class="research-container">
+
+    <p class="eyebrow">YOUR PERSONAL RESEARCH SPACE</p>
+
+    <h1>My Research <span>Library</span></h1>
+
+    <p class="page-description">
+        Your saved scientific publications, all in one place.
+    </p>
+
+    <a href="{{ url_for('research.library') }}" class="back-link">
+        ← Back to Research Library
+    </a>
+
+    <div class="paper-results">
+
+        {% if papers %}
+
+            {% for paper in papers %}
+
+                <article class="paper-card">
+
+                    <div class="paper-top">
+                        <span class="source-tag">
+                            {{ paper.source or "Research Paper" }}
+                        </span>
+
+                        <span>
+                            {{ paper.publication_year or "Year unavailable" }}
+                        </span>
+                    </div>
+
+                    <h2>{{ paper.title }}</h2>
+
+                    <p class="paper-authors">
+                        {{ paper.authors or "Author information unavailable" }}
+                    </p>
+
+                    <p class="journal-name">
+                        {{ paper.journal or "Journal unavailable" }}
+                    </p>
+
+                    <p class="paper-abstract">
+                        {{ paper.abstract or "Abstract unavailable." }}
+                    </p>
+
+                    <div class="paper-links">
+
+                        {% if paper.paper_url %}
+                            <a href="{{ paper.paper_url }}"
+                               target="_blank"
+                               rel="noopener noreferrer">
+                                View Publication ↗
+                            </a>
+                        {% endif %}
+
+                    </div>
+
+                    <!-- ADD TO COLLECTION -->
+                    <div class="add-collection-section">
+
+                        {% if collections %}
+
+                            <form method="POST"
+                                  action="{{ url_for('research.add_to_collection') }}"
+                                  class="collection-form">
+
+                                <input type="hidden"
+                                       name="csrf_token"
+                                       value="{{ csrf_token() }}">
+
+                                <input type="hidden"
+                                       name="paper_id"
+                                       value="{{ paper.id }}">
+
+                                <label for="collection-{{ paper.id }}">
+                                    Add to Collection
+                                </label>
+
+                                <select
+                                    name="collection_id"
+                                    id="collection-{{ paper.id }}"
+                                    required>
+
+                                    <option value="">
+                                        Select a collection
+                                    </option>
+
+                                    {% for collection in collections %}
+
+                                        <option value="{{ collection.id }}"
+                                            {% if paper in collection.papers %}
+                                                disabled
+                                            {% endif %}>
+
+                                            {{ collection.name }}
+                                            {% if paper in collection.papers %}
+                                                (Already added)
+                                            {% endif %}
+
+                                        </option>
+
+                                    {% endfor %}
+
+                                </select>
+
+                                <button type="submit" class="collection-button">
+                                    + Add to Collection
+                                </button>
+
+                            </form>
+
+                        {% else %}
+
+                            <p>
+                                You haven't created any collections yet.
+                            </p>
+
+                            <a href="{{ url_for('dashboard.collections') }}">
+                                Create a Collection →
+                            </a>
+
+                        {% endif %}
+
+                    </div>
+
+                    <div class="paper-bottom">
+
+                        <span class="access-tag">
+                            Saved to your library
+                        </span>
+
+                        <button
+                            class="remove-button"
+                            data-paper-id="{{ paper.id }}">
+                            Remove Paper
+                        </button>
+
+                    </div>
+
+                </article>
+
+            {% endfor %}
+
+        {% else %}
+
+            <div class="empty-state">
+                <h3>Your library is empty.</h3>
+
+                <p>
+                    Search the Research Library and save
+                    publications to see them here.
+                </p>
+
+                <br>
+
+                <a href="{{ url_for('research.library') }}">
+                    Explore Research →
+                </a>
+            </div>
+
+        {% endif %}
+
+    </div>
+
+</section>
+
+<script src="{{ url_for('static', filename='js/research.js') }}"></script>
+
+{% endblock %}

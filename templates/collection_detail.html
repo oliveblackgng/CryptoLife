@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+
+{% block title %}{{ collection.name }} | CryptoLife{% endblock %}
+
+{% block content %}
+
+<link rel="stylesheet"
+      href="{{ url_for('static', filename='css/research.css') }}">
+
+<section class="research-container">
+
+    <p class="eyebrow">YOUR RESEARCH COLLECTION</p>
+
+    <h1>{{ collection.name }}</h1>
+
+    <p class="page-description">
+        {{ collection.description or "Your collected research papers." }}
+    </p>
+
+    <a href="{{ url_for('dashboard.collections') }}" class="back-link">
+        ← Back to Collections
+    </a>
+
+    <div class="paper-results">
+
+        {% if papers %}
+
+            {% for paper in papers %}
+
+                <article class="paper-card">
+
+                    <div class="paper-top">
+                        <span class="source-tag">
+                            {{ paper.source or "Research Paper" }}
+                        </span>
+
+                        <span>
+                            {{ paper.publication_year or "Year unavailable" }}
+                        </span>
+                    </div>
+
+                    <h2>{{ paper.title }}</h2>
+
+                    <p class="paper-authors">
+                        {{ paper.authors or "Author information unavailable" }}
+                    </p>
+
+                    <p class="journal-name">
+                        {{ paper.journal or "Journal unavailable" }}
+                    </p>
+
+                    <p class="paper-abstract">
+                        {{ paper.abstract or "Abstract unavailable." }}
+                    </p>
+
+                    {% if paper.paper_url %}
+                        <div class="paper-links">
+                            <a href="{{ paper.paper_url }}"
+                               target="_blank"
+                               rel="noopener noreferrer">
+                                View Publication ↗
+                            </a>
+                        </div>
+                    {% endif %}
+
+                </article>
+
+            {% endfor %}
+
+        {% else %}
+
+            <div class="empty-state">
+                <h3>This collection is empty.</h3>
+                <p>
+                    Go to My Research Library and add papers
+                    to this collection.
+                </p>
+
+                <a href="{{ url_for('research.my_research') }}">
+                    Explore My Research →
+                </a>
+            </div>
+
+        {% endif %}
+
+    </div>
+
+</section>
+
+{% endblock %}
