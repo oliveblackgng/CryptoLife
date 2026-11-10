@@ -9,3 +9,4 @@ xlrd
 gunicorn
 requests
 python-dotenv
+email-validator
